@@ -9,9 +9,9 @@ downloaded from [Mixamo] and converted using [MonkeyWrench].
 
 ![screenshot](screenshots/Vanguard.png)
 
-11-MByte ZIP archive containining:
-+ 2 textures in JPEG format and
+11-MByte [ZIP archive](Vanguard.zip) containining:
 + a version-2 J3O model asset with 2 meshes, 82 animation clips, and 9027 vertices
++ 2 textures (1024 x 1024) in PNG format
 
 
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"

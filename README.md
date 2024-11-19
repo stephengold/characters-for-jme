@@ -21,7 +21,7 @@ downloaded from [Mixamo] and converted using [MonkeyWrench].
 
 ![screenshot](screenshots/Vanguard.png)
 
-11-MByte [ZIP archive](Vanguard.zip) containining:
+11-MByte [ZIP archive](Vanguard.zip) containing:
 + a version-2 J3O model asset with 2 meshes, 82 animation clips, and 9027 vertices
 + 2 textures (1024 x 1024) in PNG format
 

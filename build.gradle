@@ -1,0 +1,64 @@
+// Gradle script to build the characters-for-jme project
+
+plugins {
+    id 'application' // to build JVM applications
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+application {
+    mainClass = 'com.github.stephengold.characters.TestCharacter'
+}
+if (!hasProperty('mainClass')) {
+    ext.mainClass = application.mainClass
+}
+jar.manifest.attributes('Main-Class': application.mainClass)
+
+tasks.register('Erika', JavaExec) {
+    args('Erika')
+    mainClass = application.mainClass
+}
+tasks.register('Vanguard', JavaExec) {
+    args('Vanguard')
+    mainClass = application.mainClass
+}
+
+tasks.withType(JavaCompile).configureEach { // Java compile-time options:
+    options.compilerArgs << '-Xdiags:verbose'
+    options.compilerArgs << '-Xlint:unchecked'
+    options.deprecation = true // to provide detailed deprecation warnings
+    options.encoding = 'UTF-8'
+    options.release = 11
+}
+
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
+Boolean isMacOS = DefaultNativePlatform.currentOperatingSystem.isMacOsX()
+
+tasks.withType(JavaExec).configureEach { // Java runtime options:
+    if (isMacOS) {
+        jvmArgs '-XstartOnFirstThread'
+    }
+    classpath sourceSets.main.runtimeClasspath
+    enableAssertions true
+}
+
+configurations.configureEach {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // to disable caching of snapshots
+}
+
+dependencies {
+    // from mavenCentral (or mavenLocal) repositories:
+    implementation(libs.acorus)
+    implementation(libs.jme3.core)
+    implementation(libs.jme3.desktop)
+    runtimeOnly(libs.jme3.awt.dialogs)
+    runtimeOnly(libs.jme3.lwjgl3) // LWJGL 3.x
+
+    // characters-for-jme doesn't use jme3-jogg nor jme3-plugins
+    //  -- they are included solely to avoid warnings from AssetConfig.
+    runtimeOnly(libs.jme3.jogg)
+    runtimeOnly(libs.jme3.plugins)
+}

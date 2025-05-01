@@ -1,4 +1,4 @@
-// Gradle script to build the characters-for-jme project
+// Gradle script to build/run the characters-for-jme project
 
 plugins {
     id 'application' // to build JVM applications
@@ -62,7 +62,7 @@ dependencies {
     runtimeOnly(libs.jme3.lwjgl3) // LWJGL 3.x
 
     // characters-for-jme doesn't use jme3-jogg nor jme3-plugins
-    //  -- they are included solely to avoid warnings from AssetConfig.
+    //  -- they are included solely to avoid runtime warnings from AssetConfig:
     runtimeOnly(libs.jme3.jogg)
     runtimeOnly(libs.jme3.plugins)
 }

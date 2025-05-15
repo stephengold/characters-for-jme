@@ -1,4 +1,4 @@
-## catalog of libraries and plugins used to build the characters-for-jme project
+## catalog of libraries and plugins used to build and run the characters-for-jme project
 
 [versions]
 
@@ -8,6 +8,7 @@ jme = "3.8.1-stable"
 
 acorus = "com.github.stephengold:Acorus:2.0.2"
 heart = "com.github.stephengold:Heart:9.2.0"
+
 jme3-awt-dialogs = { module = "org.jmonkeyengine:jme3-awt-dialogs", version.ref = "jme" }
 jme3-core = { module = "org.jmonkeyengine:jme3-core", version.ref = "jme" }
 jme3-desktop = { module = "org.jmonkeyengine:jme3-desktop", version.ref = "jme" }
